@@ -2,9 +2,9 @@
 
 nav {
   display: flex;
-  background-color: #ff6600;
+  background-color: #9a8bf1fc;
   align-items: center;
-  padding: 5px 20px;
+  padding: 15px 20px;
   border-radius: 3px 3px 0 0;
 }
 
@@ -13,7 +13,7 @@ nav {
 }
 
 .nav-link {
-  font-size: 0.85rem;
+  font-size: 1rem;
   margin: 0 3px;
 }
 

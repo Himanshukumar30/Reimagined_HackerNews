@@ -12,6 +12,30 @@ async function getAndShowStoriesOnStart() {
   putStoriesOnPage();
 }
 
+/** Handle submit on new story form. */
+
+async function submitNewStory(evt) {
+  console.debug("submitNewStory", evt);
+  evt.preventDefault();
+
+  const title = $("#new-title").val();
+  const url = $("#new-url").val();
+  const author = $("#new-author").val();
+  const username = currentUser.username;
+  const storyData = { title, url, author, username };
+
+  const story = await storyList.addStory(currentUser, storyData);
+
+  const $story = generateStoryMarkup(story);
+  $allStoriesList.prepend($story);
+
+  //
+  $submitNewForm.slideUp("slow");
+  $submitNewForm.trigger("reset");
+}
+
+$submitNewForm.on("submit", submitNewStory);
+
 /**
  * A render method to render HTML for an individual Story instance
  * - story: an instance of Story

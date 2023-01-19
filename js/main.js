@@ -9,7 +9,7 @@ const $allStoriesList = $("#all-stories-list");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
-const $submitNewForm = $("#form-submit-new");
+const $submitNewForm = $("#submit-new-form");
 
 const $navLogin = $("#nav-login");
 const $navSubmit = $("#nav-submit");

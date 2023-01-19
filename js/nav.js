@@ -18,6 +18,7 @@ $body.on("click", "#nav-all", navAllStories);
 function navSubmitClick(evt) {
   console.debug("navSubmitClick", evt);
   hidePageComponents();
+  $allStoriesList.show();
   $submitNewForm.show();
 }
 
@@ -40,7 +41,7 @@ function updateNavOnLogin() {
   console.debug("updateNavOnLogin");
   $(".main-nav-links").show();
   $navLogin.hide();
-  $submitNewForm.show();
+  $navSubmit.show();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }

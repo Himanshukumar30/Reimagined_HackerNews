@@ -22,7 +22,7 @@ function navSubmitClick(evt) {
   $submitNewForm.show();
 }
 
-$navSubmit.on("Click", navSubmitClick);
+$navSubmit.on("click", navSubmitClick);
 
 /** Show login/signup on click on "login" */
 

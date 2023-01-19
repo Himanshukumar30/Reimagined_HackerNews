@@ -36,6 +36,13 @@ async function submitNewStory(evt) {
 
 $submitNewForm.on("submit", submitNewStory);
 
+// Get delete button html
+function getDeleteBtnHTML() {
+  return `<span class="trash-can">
+        <i class="fas fa-trash-alt"></i>
+      </span>`;
+}
+
 /**
  * A render method to render HTML for an individual Story instance
  * - story: an instance of Story
@@ -43,12 +50,12 @@ $submitNewForm.on("submit", submitNewStory);
  * Returns the markup for the story.
  */
 
-function generateStoryMarkup(story) {
-  // console.debug("generateStoryMarkup", story);
-
+function generateStoryMarkup(story, showDeleteBtn = false) {
   const hostName = story.getHostName();
+
   return $(`
       <li id="${story.storyId}">
+        ${showDeleteBtn ? getDeleteBtnHTML() : ""}
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -74,3 +81,19 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/** Handle deleting a story. */
+
+async function deleteStory(evt) {
+  console.debug("deleteStory");
+
+  const $targetLi = $(evt.target).closest("li");
+  const storyId = $targetLi.attr("id");
+
+  await storyList.removeStory(currentUser, storyId);
+
+  // re-generate story list
+  await putUserStoriesOnPage();
+}
+
+$ownStories.on("click", ".trash-can", deleteStory);

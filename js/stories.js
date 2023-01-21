@@ -36,6 +36,25 @@ async function submitNewStory(evt) {
 
 $submitNewForm.on("submit", submitNewStory);
 
+// Add stories created by user
+
+function putUserStoriesOnPage() {
+  console.debug("putUserStoriesOnPage");
+
+  $ownStories.empty();
+
+  if (currentUser.ownStories.length === 0) {
+    $ownStories.append("<h5>No stories added by user yet!</h5>");
+  } else {
+    // loop through all of users stories and generate HTML for them
+    for (let story of currentUser.ownStories) {
+      let $story = generateStoryMarkup(story, true);
+      $ownStories.append($story);
+    }
+  }
+
+  $ownStories.show();
+}
 // Get delete button html
 function getDeleteBtnHTML() {
   return `<span class="trash-can">
@@ -52,7 +71,6 @@ function getDeleteBtnHTML() {
 
 function generateStoryMarkup(story, showDeleteBtn = false) {
   const hostName = story.getHostName();
-
   return $(`
       <li id="${story.storyId}">
         ${showDeleteBtn ? getDeleteBtnHTML() : ""}

@@ -24,6 +24,16 @@ function navSubmitClick(evt) {
 
 $navSubmit.on("click", navSubmitClick);
 
+// Handle click on my stories
+function navMyStories(evt) {
+  console.debug("navMyStories", evt);
+  hidePageComponents();
+  putUserStoriesOnPage();
+  $ownStories.show();
+}
+
+$body.on("click", "#nav-my-stories", navMyStories);
+
 /** Show login/signup on click on "login" */
 
 function navLoginClick(evt) {

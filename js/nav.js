@@ -34,6 +34,16 @@ function navMyStories(evt) {
 
 $body.on("click", "#nav-my-stories", navMyStories);
 
+// Handle click on favorites
+
+function navFavoritesClick(evt) {
+  console.debug("navFavoritesClick", evt);
+  hidePageComponents();
+  putFavoritesListOnPage();
+}
+
+$body.on("click", "#nav-favorites", navFavoritesClick);
+
 /** Show login/signup on click on "login" */
 
 function navLoginClick(evt) {
